@@ -3,6 +3,7 @@ import { ref, onMounted } from "vue";
 import gsap from "gsap";
 import Container from "../layout/Container.vue";
 import profile from "../../assets/images/parras.jpg";
+import { siVuedotjs, siLaravel, siNextdotjs, siTypescript } from "simple-icons";
 
 const photo = ref<HTMLElement | null>(null);
 const badgeVue = ref<HTMLElement | null>(null);
@@ -66,10 +67,22 @@ onMounted(() => {
               <img :src="profile" class="w-full rounded-[20px] transition duration-500 hover:scale-105 sm:rounded-[28px]" />
             </div>
 
-            <div ref="badgeVue" class="absolute -left-2 top-10 rounded-full bg-white px-3 py-2 text-xs shadow-xl sm:left-0 sm:top-16 sm:px-5 sm:py-3 sm:text-base">💚 Vue.js</div>
-            <div ref="badgeLaravel" class="absolute -right-2 top-28 rounded-full bg-white px-3 py-2 text-xs shadow-xl sm:-right-6 sm:top-40 sm:px-5 sm:py-3 sm:text-base">❤️ Laravel</div>
-            <div ref="badgeNext" class="absolute bottom-10 left-1 rounded-full bg-white px-3 py-2 text-xs shadow-xl sm:bottom-14 sm:left-5 sm:px-5 sm:py-3 sm:text-base">▲ Next.js</div>
-            <div ref="badgeTS" class="absolute bottom-0 right-2 rounded-full bg-white px-3 py-2 text-xs shadow-xl sm:right-8 sm:px-5 sm:py-3 sm:text-base">🔷 TypeScript</div>
+            <div ref="badgeVue" class="absolute -left-2 top-10 flex items-center gap-1.5 rounded-full bg-white px-3 py-2 text-xs shadow-xl sm:left-0 sm:top-16 sm:gap-2 sm:px-5 sm:py-3 sm:text-base">
+              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 sm:h-4 sm:w-4" :fill="`#${siVuedotjs.hex}`"><path :d="siVuedotjs.path" /></svg>
+              Vue.js
+            </div>
+            <div ref="badgeLaravel" class="absolute -right-2 top-28 flex items-center gap-1.5 rounded-full bg-white px-3 py-2 text-xs shadow-xl sm:-right-6 sm:top-40 sm:gap-2 sm:px-5 sm:py-3 sm:text-base">
+              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 sm:h-4 sm:w-4" :fill="`#${siLaravel.hex}`"><path :d="siLaravel.path" /></svg>
+              Laravel
+            </div>
+            <div ref="badgeNext" class="absolute bottom-10 left-1 flex items-center gap-1.5 rounded-full bg-white px-3 py-2 text-xs shadow-xl sm:bottom-14 sm:left-5 sm:gap-2 sm:px-5 sm:py-3 sm:text-base">
+              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 sm:h-4 sm:w-4" :fill="`#${siNextdotjs.hex}`"><path :d="siNextdotjs.path" /></svg>
+              Next.js
+            </div>
+            <div ref="badgeTS" class="absolute bottom-0 right-2 flex items-center gap-1.5 rounded-full bg-white px-3 py-2 text-xs shadow-xl sm:right-8 sm:gap-2 sm:px-5 sm:py-3 sm:text-base">
+              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 sm:h-4 sm:w-4" :fill="`#${siTypescript.hex}`"><path :d="siTypescript.path" /></svg>
+              TypeScript
+            </div>
           </div>
         </div>
 

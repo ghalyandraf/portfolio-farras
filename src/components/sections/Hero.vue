@@ -11,6 +11,13 @@ const badgeLaravel = ref<HTMLElement | null>(null);
 const badgeNext = ref<HTMLElement | null>(null);
 const badgeTS = ref<HTMLElement | null>(null);
 
+function scrollToSection(id: string) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
 onMounted(() => {
   gsap.from(".hero-text", { opacity: 0, y: 50, stagger: 0.15, duration: 1, ease: "power3.out" });
   gsap.to(photo.value, { y: -15, repeat: -1, yoyo: true, duration: 3, ease: "power1.inOut" });
@@ -49,8 +56,18 @@ onMounted(() => {
           <p class="hero-text mx-auto mt-6 max-w-xl text-base leading-7 text-zinc-500 sm:mt-8 sm:text-lg sm:leading-8 lg:mx-0">I build modern, fast and beautiful web experiences using Vue.js, Laravel, Next.js and modern frontend technologies.</p>
 
           <div class="hero-text mt-8 flex flex-wrap justify-center gap-4 sm:mt-10 lg:justify-start">
-            <button class="rounded-full bg-black px-6 py-3.5 text-sm font-medium text-white transition hover:-translate-y-1 hover:shadow-xl sm:px-7 sm:py-4 sm:text-base">View Projects</button>
-            <button class="rounded-full border px-6 py-3.5 text-sm transition hover:bg-white sm:px-7 sm:py-4 sm:text-base">Contact Me</button>
+            <button
+              @click="scrollToSection('projects')"
+              class="rounded-full bg-black px-6 py-3.5 text-sm font-medium text-white transition hover:-translate-y-1 hover:shadow-xl sm:px-7 sm:py-4 sm:text-base"
+            >
+              View Projects
+            </button>
+            <button
+              @click="scrollToSection('contact')"
+              class="rounded-full border px-6 py-3.5 text-sm transition hover:bg-white sm:px-7 sm:py-4 sm:text-base"
+            >
+              Contact Me
+            </button>
           </div>
 
           <div class="hero-text mt-10 flex items-center justify-center gap-2 text-zinc-400 sm:mt-12 lg:justify-start">

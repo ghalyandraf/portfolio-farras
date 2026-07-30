@@ -14,19 +14,19 @@ const certificates = [
     image: bnsp,
   },
   {
-    title: "Membangun Fullstack Mobile App",
+    title: "Building a Full-Stack Mobile App",
     issuer: "SERTIKOM",
     year: "2025",
     image: sertikom3,
   },
   {
-    title: "Membangun Website Library Management",
+    title: "Building a Library Management Website",
     issuer: "SERTIKOM",
     year: "2024",
     image: sertikom2,
   },
   {
-    title: "Membuat Aplikasi Pemesanan Hotel Berbasis Web",
+    title: "Developing a Web-Based Hotel Booking Application",
     issuer: "SERTIKOM",
     year: "2024",
     image: sertikom1,

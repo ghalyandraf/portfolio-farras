@@ -8,7 +8,7 @@ const projects = [
   {
     title: "Fortuna Website",
     image: fortuna,
-    description: "Website layanan listrik berbasis Laravel dengan sistem booking dan dashboard admin.",
+    description: "Laravel-based electrical service website featuring a booking system and an admin dashboard.",
     tech: ["Laravel", "Tailwind CSS", "MySQL"],
     link: "https://fortunasolusi.com",
     button: "Live Website",
@@ -16,7 +16,7 @@ const projects = [
   {
     title: "Perpustakaan",
     image: perpustakaan,
-    description: "Website informasi perpustakaan berbasis Laravel.",
+    description: "Laravel-based library information website.",
     tech: ["Laravel", "Bootstrap", "MySQL"],
     link: "https://www.linkedin.com/posts/farras-ghalyandra-644304387_saya-mengembangkan-e-perpustakaan-sebuah-ugcPost-7393616407881568256-bOi4/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAF9DcpQBrXQKDbn1bGpsCaKH80KlGVPBcz4",
     button: "View Post",
@@ -24,7 +24,7 @@ const projects = [
   {
     title: "Travel",
     image: travel,
-    description: "Website travel berbasis Laravel dengan fitur booking paket wisata dan dashboard admin.",
+    description: "Laravel-based travel website featuring tour package booking and an admin dashboard.",
     tech: ["Laravel", "Bootstrap", "JavaScript", "Laragon"],
     link: "https://www.linkedin.com/posts/farras-ghalyandra-644304387_website-travel-berbasis-laravel-yang-dirancang-ugcPost-7392912938812112896-ezhN/",
     button: "View Post",
@@ -32,7 +32,7 @@ const projects = [
   {
     title: "Hotel",
     image: hotel,
-    description: "Website booking hotel modern dengan sistem reservasi kamar berbasis Laravel.",
+    description: "A modern hotel booking website featuring a Laravel-based room reservation system.",
     tech: ["Laravel", "Bootstrap", "JavaScript", "Laragon"],
     link: "https://www.linkedin.com/posts/farras-ghalyandra-644304387_hotel-website-is-a-web-based-hotel-booking-activity-7384563766392143872-Qmxf/",
     button: "View Post",

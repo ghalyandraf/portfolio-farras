@@ -14,7 +14,7 @@ const projects = [
     button: "Live Website",
   },
   {
-    title: "Perpustakaan",
+    title: "Library",
     image: perpustakaan,
     description: "Laravel-based library information website.",
     tech: ["Laravel", "Bootstrap", "MySQL"],

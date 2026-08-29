@@ -1,10 +1,19 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import fortuna from "@/assets/images/fortuna.png";
 import perpustakaan from "@/assets/images/img-perpus.png";
 import travel from "@/assets/images/img-travel.png";
 import hotel from "@/assets/images/newHotel.png";
+import webpilar from "@/assets/images/webpilar.jpg";
 
 const projects = [
+  {
+    title: "PILAR System",
+    image: webpilar,
+    description: "Laravel-based web application designed for front desk data calculation.",
+    tech: ["Laravel", "Tailwind CSS", "MySQL"],
+    link: "https://pilarsistem.my.id/",
+    button: "Live Website",
+  },
   {
     title: "Fortuna Website",
     image: fortuna,
@@ -43,7 +52,6 @@ const projects = [
 <template>
   <section id="projects" class="bg-zinc-50 py-20 sm:py-24 lg:py-28">
     <div class="mx-auto max-w-7xl px-4 sm:px-6">
-
       <div class="mx-auto max-w-2xl text-center">
         <span class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-xs font-medium text-blue-600 sm:py-2 sm:text-sm">My Projects</span>
         <h2 class="mt-5 text-3xl font-black sm:mt-6 sm:text-4xl md:text-5xl">Selected Works</h2>
@@ -77,7 +85,6 @@ const projects = [
           </div>
         </div>
       </div>
-
     </div>
   </section>
 </template>

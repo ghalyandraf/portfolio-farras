@@ -1,71 +1,47 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
+import { computed } from "vue";
 import Container from "../layout/Container.vue";
+import { currentLang, translations } from "../../composables/i18n";
 
-const cards = [
-  {
-    title: "About Me",
-    icon: "code",
-    lines: [
-      "I love designing and developing beautiful websites. My focus is creating websites that are fast, responsive, and provide a great user experience.",
-    ],
-  },
-  {
-    title: "Location",
-    icon: "map-pin",
-    lines: ["Bogor, Indonesia", "Open for Remote Work & Freelance Projects."],
-  },
-  {
-    title: "Education",
-    icon: "graduation-cap",
-    lines: ["SMK Pesat", "Software Engineering", "2023 - 2026"],
-  },
-  {
-    title: "Currently",
-    icon: "rocket",
-    lines: [
-      "Building modern websites with Vue.js, Laravel, and Next.js.",
-      "Always learning something new.",
-    ],
-  },
-];
+const t = computed(() => translations[currentLang.value].about);
+
+const cardIcons = ["code", "map-pin", "graduation-cap", "rocket"];
 </script>
 
 <template>
-  <section id="about" class="bg-white py-20 sm:py-24 lg:py-32">
+  <section id="about" class="bg-white py-20 transition-colors duration-300 dark:bg-zinc-950 sm:py-24 lg:py-32">
     <Container>
       <!-- Heading -->
       <div class="mx-auto max-w-2xl text-center">
         <p
-          class="text-xs font-semibold tracking-[3px] text-blue-600 sm:text-sm sm:tracking-[4px]"
+          class="text-xs font-semibold tracking-[3px] text-blue-600 dark:text-blue-400 sm:text-sm sm:tracking-[4px]"
         >
-          ABOUT
+          {{ t.tag }}
         </p>
 
-        <h2 class="mt-4 text-3xl font-black sm:text-4xl md:text-5xl">
-          Know Me Better
+        <h2 class="mt-4 text-3xl font-black text-zinc-900 dark:text-white sm:text-4xl md:text-5xl">
+          {{ t.title }}
         </h2>
 
-        <p class="mt-5 text-base leading-7 text-zinc-500 sm:mt-6 sm:text-lg sm:leading-8">
-          Passionate Full Stack Developer from Bogor, Indonesia. I enjoy
-          creating modern digital experiences with Vue, Laravel, Next.js, and
-          the latest web technologies.
+        <p class="mt-5 text-base leading-7 text-zinc-500 dark:text-zinc-400 sm:mt-6 sm:text-lg sm:leading-8">
+          {{ t.desc }}
         </p>
       </div>
 
       <!-- Cards -->
       <div class="mt-12 grid gap-5 sm:mt-16 sm:gap-6 md:mt-20 md:grid-cols-2">
         <div
-          v-for="card in cards"
+          v-for="(card, index) in t.cards"
           :key="card.title"
-          class="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition hover:-translate-y-2 hover:shadow-xl sm:rounded-3xl sm:p-8"
+          class="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition hover:-translate-y-2 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-900 sm:rounded-3xl sm:p-8"
         >
           <div
-            class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 sm:h-14 sm:w-14 sm:rounded-2xl"
+            class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-950/50 sm:h-14 sm:w-14 sm:rounded-2xl"
           >
             <!-- CODE -->
             <svg
-              v-if="card.icon === 'code'"
-              class="h-6 w-6 text-blue-600 sm:h-7 sm:w-7"
+              v-if="cardIcons[index] === 'code'"
+              class="h-6 w-6 text-blue-600 dark:text-blue-400 sm:h-7 sm:w-7"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -80,8 +56,8 @@ const cards = [
 
             <!-- MAP PIN -->
             <svg
-              v-else-if="card.icon === 'map-pin'"
-              class="h-6 w-6 text-blue-600 sm:h-7 sm:w-7"
+              v-else-if="cardIcons[index] === 'map-pin'"
+              class="h-6 w-6 text-blue-600 dark:text-blue-400 sm:h-7 sm:w-7"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -102,8 +78,8 @@ const cards = [
 
             <!-- GRADUATION CAP -->
             <svg
-              v-else-if="card.icon === 'graduation-cap'"
-              class="h-6 w-6 text-blue-600 sm:h-7 sm:w-7"
+              v-else-if="cardIcons[index] === 'graduation-cap'"
+              class="h-6 w-6 text-blue-600 dark:text-blue-400 sm:h-7 sm:w-7"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -125,7 +101,7 @@ const cards = [
             <!-- ROCKET -->
             <svg
               v-else
-              class="h-6 w-6 text-blue-600 sm:h-7 sm:w-7"
+              class="h-6 w-6 text-blue-600 dark:text-blue-400 sm:h-7 sm:w-7"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -145,14 +121,14 @@ const cards = [
             </svg>
           </div>
 
-          <h3 class="mt-5 text-xl font-bold sm:mt-6 sm:text-2xl">
+          <h3 class="mt-5 text-xl font-bold text-zinc-900 dark:text-white sm:mt-6 sm:text-2xl">
             {{ card.title }}
           </h3>
 
           <p
             v-for="(line, i) in card.lines"
             :key="i"
-            class="mt-3 text-sm leading-6 text-zinc-500 sm:mt-4 sm:text-base sm:leading-8"
+            class="mt-3 text-sm leading-6 text-zinc-500 dark:text-zinc-400 sm:mt-4 sm:text-base sm:leading-8"
             :class="{ 'mt-1 sm:mt-1': i > 0 && card.lines.length > 2 }"
           >
             {{ line }}

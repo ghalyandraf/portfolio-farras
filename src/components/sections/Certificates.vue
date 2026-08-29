@@ -1,37 +1,44 @@
-<script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from "vue";
+﻿<script setup lang="ts">
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 
 import bnsp from "@/assets/certificates/bnsp.png";
 import sertikom1 from "@/assets/certificates/sertikom1.png";
 import sertikom2 from "@/assets/certificates/sertikom2.png";
 import sertikom3 from "@/assets/certificates/sertikom3.png";
+import { currentLang, translations } from "../../composables/i18n";
 
-const certificates = [
+const t = computed(() => translations[currentLang.value].certificates);
+
+const certificates = computed(() => [
   {
-    title: "BNSP Junior Web Developer",
+    title: t.value.items.bnsp.title,
     issuer: "BNSP",
     year: "2025",
     image: bnsp,
+    description: t.value.items.bnsp.desc,
   },
   {
-    title: "Building a Full-Stack Mobile App",
+    title: t.value.items.mobile.title,
     issuer: "SERTIKOM",
     year: "2025",
     image: sertikom3,
+    description: t.value.items.mobile.desc,
   },
   {
-    title: "Building a Library Management Website",
+    title: t.value.items.library.title,
     issuer: "SERTIKOM",
     year: "2024",
     image: sertikom2,
+    description: t.value.items.library.desc,
   },
   {
-    title: "Developing a Web-Based Hotel Booking Application",
+    title: t.value.items.hotel.title,
     issuer: "SERTIKOM",
     year: "2024",
     image: sertikom1,
+    description: t.value.items.hotel.desc,
   },
-];
+]);
 
 const selectedCertificate = ref<string | null>(null);
 
@@ -62,23 +69,22 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section id="certificates" class="bg-zinc-50 py-20 sm:py-24 lg:py-28">
+  <section id="certificates" class="bg-zinc-50 py-20 transition-colors duration-300 dark:bg-zinc-900 sm:py-24 lg:py-28">
     <div class="mx-auto max-w-7xl px-4 sm:px-6">
       <!-- Heading -->
       <div class="mx-auto max-w-2xl text-center">
         <span
-          class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-xs font-medium text-blue-600 sm:py-2 sm:text-sm"
+          class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-xs font-medium text-blue-600 dark:border-blue-900/50 dark:bg-blue-950/60 dark:text-blue-400 sm:py-2 sm:text-sm"
         >
-          My Certificates
+          {{ t.tag }}
         </span>
 
-        <h2 class="mt-5 text-3xl font-black sm:mt-6 sm:text-4xl md:text-5xl">
-          Professional Certifications
+        <h2 class="mt-5 text-3xl font-black text-zinc-900 dark:text-white sm:mt-6 sm:text-4xl md:text-5xl">
+          {{ t.title }}
         </h2>
 
-        <p class="mt-4 text-base leading-7 text-zinc-500 sm:mt-5 sm:text-lg sm:leading-8">
-          Certifications and competency assessments that demonstrate my
-          expertise in web development and software engineering.
+        <p class="mt-4 text-base leading-7 text-zinc-500 dark:text-zinc-400 sm:mt-5 sm:text-lg sm:leading-8">
+          {{ t.desc }}
         </p>
       </div>
 
@@ -87,11 +93,11 @@ onBeforeUnmount(() => {
         <div
           v-for="certificate in certificates"
           :key="certificate.title"
-          class="group overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl sm:rounded-[32px]"
+          class="group overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl dark:border-zinc-800 dark:bg-zinc-950 sm:rounded-[32px]"
         >
           <div class="grid gap-0 lg:grid-cols-2 lg:gap-10">
             <!-- IMAGE -->
-            <div class="flex items-center justify-center bg-zinc-100 p-5 sm:p-8">
+            <div class="flex items-center justify-center bg-zinc-100 p-5 dark:bg-zinc-800/80 sm:p-8">
               <img
                 :src="certificate.image"
                 :alt="certificate.title"
@@ -103,24 +109,22 @@ onBeforeUnmount(() => {
             <!-- CONTENT -->
             <div class="flex flex-col justify-center p-6 sm:p-8 md:p-12">
               <span
-                class="w-fit rounded-full bg-blue-50 px-3 py-1.5 text-xs font-medium text-blue-600 sm:px-4 sm:py-2 sm:text-sm"
+                class="w-fit rounded-full bg-blue-50 px-3 py-1.5 text-xs font-medium text-blue-600 dark:bg-blue-950/60 dark:text-blue-400 sm:px-4 sm:py-2 sm:text-sm"
               >
                 {{ certificate.issuer }}
               </span>
 
-              <h3 class="mt-5 text-xl font-bold sm:mt-6 sm:text-2xl md:text-3xl lg:text-4xl">
+              <h3 class="mt-5 text-xl font-bold text-zinc-900 dark:text-white sm:mt-6 sm:text-2xl md:text-3xl lg:text-4xl">
                 {{ certificate.title }}
               </h3>
 
-              <p class="mt-4 text-sm leading-6 text-zinc-500 sm:mt-6 sm:text-base sm:leading-8">
-                Successfully completed the professional competency
-                assessment and earned this certification, validating my
-                skills in web development.
+              <p class="mt-4 text-sm leading-6 text-zinc-500 dark:text-zinc-400 sm:mt-6 sm:text-base sm:leading-8">
+                {{ certificate.description }}
               </p>
 
               <div class="mt-6 sm:mt-8">
                 <span
-                  class="rounded-full bg-zinc-100 px-3 py-1.5 text-xs font-medium text-zinc-700 sm:px-4 sm:py-2 sm:text-sm"
+                  class="rounded-full bg-zinc-100 px-3 py-1.5 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 sm:px-4 sm:py-2 sm:text-sm"
                 >
                   {{ certificate.year }}
                 </span>
@@ -131,7 +135,7 @@ onBeforeUnmount(() => {
                   @click="openCertificate(certificate.image)"
                   class="group inline-flex items-center rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:px-7 sm:py-3 sm:text-base"
                 >
-                  View Certificate
+                  {{ t.viewCertificate }}
 
                   <svg
                     class="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
@@ -172,14 +176,14 @@ onBeforeUnmount(() => {
       >
         <button
           @click.stop="closeCertificate"
-          class="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white text-xl font-bold text-black shadow-lg transition hover:scale-110 sm:right-6 sm:top-6 sm:h-12 sm:w-12 sm:text-2xl"
+          class="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white text-xl font-bold text-black shadow-lg transition hover:scale-110 dark:bg-zinc-800 dark:text-white sm:right-6 sm:top-6 sm:h-12 sm:w-12 sm:text-2xl"
         >
           ✕
         </button>
 
         <img
           :src="selectedCertificate"
-          class="max-h-[85vh] max-w-[92vw] rounded-2xl bg-white p-2 shadow-2xl sm:max-h-[92vh]"
+          class="max-h-[85vh] max-w-[92vw] rounded-2xl bg-white p-2 shadow-2xl dark:bg-zinc-900 sm:max-h-[92vh]"
           @click.stop
         />
       </div>
